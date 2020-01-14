@@ -1,0 +1,4 @@
+startDate,endDate,Duration,submissionDate,pu,uom,quantity,discount,total,well,costCodeChainId,costCodeChainId,Discription
+0,0,0,v,0,0,0,0,0,v,NA,NA,"When there is an exact match between two services with a same or different submission date, it could be assigned to same or different well"
+0,0,0,v,v,v,v,v,1,v,NA,NA,"same dates but different total, the difference in total may be because of different quantity or pu or both"
+1,1,1,v,0,0,0,0,0,v,NA,NA,different dates and same total
