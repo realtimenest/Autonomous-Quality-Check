@@ -171,7 +171,7 @@ Minor_excell_file[0] =  pd.read_excel('Potential_fraud_classes.xls',sheet_name='
 Minor_excell_file[1] =  pd.read_excel('Potential_fraud_classes.xls',sheet_name='1').values
 Minor_excell_file[2] =  pd.read_excel('Potential_fraud_classes.xls',sheet_name='2').values
 
-# print(Minor_excell_file[0][0,0:len(Minor_excell_file[0][0])-1])
+print(Minor_excell_file[2])
 
 
 
@@ -182,45 +182,65 @@ Minor_excell_file[2] =  pd.read_excel('Potential_fraud_classes.xls',sheet_name='
 ## ================================== Analysis ===================================
 ## ==============================================================================
 
-for i in range(dfX_sign.shape[0]):
+for i in range(dfX_sign.shape[0]):  # loop through all the candidates
+    
     # iterate through major classes
-    for j in Major_classes.keys():
+    for j in Major_classes.keys():  # loop throughh the major fraud classes
  
         dummy_array = np.dot(dfX_sign[i,:],Major_classes[j])
  
-
         ## -------- Major class 0 -------- ##
-        if j == 0 :
+        if (j == 0) :
             if np.linalg.norm(dummy_array,ord=2) == 0:
                 Major_class_output[i] = j
-                
                 ## Identify the correct minor class for this major
-                for minor in range(Minor_excell_file[j].shape[0]):
-                    print(Minor_excell_file[0][0,0:len(Minor_excell_file[j][0])-1],'<<>>>', dfX_sign[i,:])
-                    if (dfX_sign[i,:] == Minor_excell_file[0][0,0:len(Minor_excell_file[j][0])-1]).all():
+                for minor in range(Minor_excell_file[j].shape[0]):  # loop throught the minor classes
+                    
+                    if (dfX_sign[i,:] == Minor_excell_file[j][minor,0:len(Minor_excell_file[j][0])-1]).all():
+                        Minor_class_output[i] = minor
+                        break
+                    else:
+                        Minor_class_output[i] = -100
+                        
+            
+
+        ## -------- Major class 1 -------- ##
+        elif (j == 1):
+            if ( np.linalg.norm(dummy_array[0,0:3],ord=2) == 0 and dummy_array[0,3] == 1): ## If the vector pattern match
+                Major_class_output[i] = j # This is where we identify which class of fraud is possible and selected 
+                ## Identify the correct minor class for this major
+                for minor in range(Minor_excell_file[j].shape[0]):  # loop throught the minor classes
+
+                    if (dfX_sign[i,:] == Minor_excell_file[j][minor,0:len(Minor_excell_file[j][0])-1]).all():
                         Minor_class_output[i] = minor
                         break
                     else:
                         Minor_class_output[i] = -1
-                        break
-            
-
-        ## -------- Major class 1 -------- ##
-        if (j == 1):
-            if ( np.linalg.norm(dummy_array[0,0:3],ord=2) == 0 and dummy_array[0,3] == 1): ## If the vector pattern match
-                Major_class_output[i] = j # This is where we identify which class of fraud is possible and selected 
                 
-    # print(i)
+ 
 
         ## -------- Major class 2 -------- ##
-        if (j == 2) :
-            # print(dummy_array)
+        elif (j == 2) :
             if np.linalg.norm(dummy_array[0,0:3],ord=2) != 0 and np.linalg.norm(dummy_array[0,3:],ord=2) == 0:
+                print('dfX_sign==>',dfX_sign[i,:])
                 Major_class_output[i] = j
-                break
+                ## Identify the correct minor class for this major
+                for minor in range(Minor_excell_file[j].shape[0]):  # loop throught the minor classes
+
+                    if (dfX_sign[i,:] == Minor_excell_file[j][minor,0:len(Minor_excell_file[j][0])-1]).all():
+                        Minor_class_output[i] = minor
+                        break
+                    else:
+                        Minor_class_output[i] = -1
+
+
+        else:
+            Major_class_output[i] = -1
+            Minor_class_output[i] = -1
+
     
-print(Major_class_output)
-print(Minor_class_output)
+print('Major_class_output ===>',Major_class_output)
+print('Minor_class_output ===>',Minor_class_output)
 
 
 

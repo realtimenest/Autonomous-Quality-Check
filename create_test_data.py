@@ -27,21 +27,17 @@ candidate_data.append([date(2019, 8, 7),date(2019, 8, 11),int((endDate - startDa
 
 # case 1
 candidate_data.append([date(2019, 8, 7),date(2019, 8, 11),int((endDate - startDate).days),date(2019, 8, 13),pu,uom,16,0,16*pu*(100 - 0)/100,'well_num_2'])
-candidate_data.append([date(2019, 8, 7),date(2019, 8, 11),int((endDate - startDate).days),date(2019, 8, 19),pu+2,uom,15,0,15*(pu+2)*(100 - 0)/100,'well_num_1'])
+candidate_data.append([date(2019, 8, 7),date(2019, 8, 11),int((endDate - startDate).days),date(2019, 8, 19),pu+2,uom+'hours',15,0,15*(pu+2)*(100 - 0)/100,'well_num_1'])
 candidate_data.append([date(2019, 8, 7),date(2019, 8, 11),int((endDate - startDate).days),date(2019, 8, 11),pu,uom,20,0,20*pu*(100 - 0)/100,'well_num_2'])
 
 
 # case 2
-candidate_data.append([date(2019, 8, 3),date(2019, 8, 21),int((endDate - startDate).days),date(2019, 8, 13),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_2'])
-candidate_data.append([date(2019, 8, 7),date(2019, 8, 10),int((endDate - startDate).days),date(2019, 8, 19),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_1'])
-candidate_data.append([date(2019, 8, 1),date(2019, 8, 11),int((endDate - startDate).days),date(2019, 8, 11),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_2'])
-candidate_data.append([date(2019, 8, 5),date(2019, 8, 9),int((endDate - startDate).days),date(2019, 8, 13),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_2'])
-candidate_data.append([date(2019, 8, 8),date(2019, 8, 12),int((endDate - startDate).days),date(2019, 8, 25),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_1'])
-candidate_data.append([date(2019, 8, 9),date(2019, 8, 11),int((endDate - startDate).days),date(2019, 8, 11),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_2'])
-
-
-
-
+candidate_data.append([date(2019, 8, 3),date(2019, 8, 21),int((date(2019, 8, 3)-date(2019, 8, 21)).days),date(2019, 8, 13),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_2'])
+candidate_data.append([date(2019, 8, 7),date(2019, 8, 10),int((date(2019, 8, 7)-date(2019, 8, 10)).days),date(2019, 8, 19),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_1'])
+candidate_data.append([date(2019, 8, 1),date(2019, 8, 11),int((date(2019, 8, 1)-date(2019, 8, 11)).days),date(2019, 8, 11),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_2'])
+candidate_data.append([date(2019, 8, 5),date(2019, 8, 9),int((date(2019, 8, 5)-date(2019, 8, 9)).days),date(2019, 8, 13),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_2'])
+candidate_data.append([date(2019, 8, 8),date(2019, 8, 12),int((date(2019, 8, 8)-date(2019, 8, 12)).days),date(2019, 8, 25),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_1'])
+candidate_data.append([date(2019, 8, 9),date(2019, 8, 11),int((date(2019, 8, 9)-date(2019, 8, 11)).days),date(2019, 8, 11),pu,uom,15,0,15*pu*(100 - 0)/100,'well_num_2'])
 
 
 
